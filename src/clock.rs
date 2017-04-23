@@ -6,19 +6,15 @@
 use std::time::Instant;
 use std::f32;
 
-/// A Real-Time-Clock (RTC) or equivalent device
-#[derive(Copy, Clone)]
 pub struct Clock {
 	time: Instant,
 }
 
 impl Clock {
-	/// Return a clock that tells the current time.
-	pub fn now() -> Clock {
+	pub fn get() -> Clock {
 		Clock { time: Instant::now() }
 	}
 
-	/// Returns seconds since clock's creation.
 	pub fn since(&self) -> f32 {
 		let duration = self.time.elapsed();
 		let nanos : f32 = duration.subsec_nanos() as f32

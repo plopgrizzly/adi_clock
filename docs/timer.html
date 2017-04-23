@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://plopgrizzly.github.io/adi/style.css"/>
+<h2>Timer</h2>
+<h3>use adi_clock::Timer;</h3>
+<p>Timer represents a High Precision Event Timer (HPET) or equivalent device.  
+It is used for precise sleeping.
+</p>
+
+<h4>fn <i>new</i>(<mark>secs</mark>: f32) -> Timer</h4>
+<p>Create a new repeating timer with an interval of <mark>secs</mark> seconds.
+</p>
+
+<h4>fn <i>wait</i>(&mut <mark>self</mark>) -> f32</h4>
+<p>Wait until timer <mark>self</mark> goes off.
+</p>
+
+<h4>fn <i>sleep</i>(<mark>secs</mark>: f32) -> f32</h4>
+<p>Sleep for <mark>secs</mark> seconds.
+</p>

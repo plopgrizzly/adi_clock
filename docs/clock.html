@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="https://plopgrizzly.github.io/adi/style.css"/>
+<h2>Clock</h2>
+<h3>use adi_clock::Clock;</h3>
+<p>Clock represents the state of a Real-Time-Clock (RTC).  You can use it to
+make animations, time operations, or determine the date and time (<b>TODO</b>).
+</p>
+
+<h4>fn <i>get</i>() -> Clock</h4>
+<p>Get the current state of the Real-Time-Clock (RTC).</p>
+
+<h4>fn <i>since</i>(&<mark>self</mark>) -> f32</h4>
+<p>Get the number of seconds since <mark>self</mark> was initialized (or since
+<i>get()</i> was called).</p>
+
+<h3>use adi_clock::Pulse;</h3>
+<h4>impl <i>Pulse</i> for <mark>f32</mark></h4>
+<p>Call these functions on the return value of <i>Clock::since()</i>.  Use
+<mark>rate_spr</mark> to specify how many seconds it takes to cycle through the
+animation.</p>
+<h4>fn <i>half_linear_pulse</i>(&<mark>self</mark>, <mark>rate_spr</mark>: f32)
+-> f32</h4>
+<p>The return value will be animated from 0 to 1 always moving the same amount
+for each interval.
+</p>
+<h4>fn <i>full_linear_pulse</i>(&<mark>self</mark>, <mark>rate_spr</mark>: f32)
+-> f32</h4>
+<p>The return value will be animated from 0 to 1 and back to 0 always moving the
+same amount for each interval. </p>
+<h4>fn <i>full_smooth_pulse</i>(&<mark>self</mark>, <mark>rate_spr</mark>: f32)
+-> f32</h4>
+<p>The return value will be animated from 0 to 1.  The closer it is 0 and 1 the
+slower it will move, the farther away from 0 and 1 the faster it will move.</p>
+<h4>fn <i>half_smooth_pulse</i>(&<mark>self</mark>, <mark>rate_spr</mark>: f32)
+-> f32</h4>
+<p>The return value will be animated from 0 to 1 and back to 0.  The closer it
+is 0 and 1 the slower it will move, the farther away from 0 and 1 the faster it
+will move.</p>

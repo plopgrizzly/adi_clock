@@ -3,7 +3,7 @@
  * Copyright 2017 (c) Jeron Lau - Licensed under the MIT LICENSE
 **/
 
-use clock::{ Clock, Pulse };
+use clock::Clock;
 
 #[cfg(any(target_os = "linux", target_os = "macos", target_os = "android"))]
 mod ffi {
@@ -30,7 +30,7 @@ mod ffi {
 
 	impl Timer {
 		pub fn new(secs: f32) -> Timer {
-			Timer { timeout: secs, ticks: 0.0, clock: Clock::now() }
+			Timer { timeout:secs, ticks:secs, clock:Clock::get() }
 		}
 
 		pub fn wait(&mut self) -> () {
@@ -39,7 +39,8 @@ mod ffi {
 
 			if delay > 0.0 {
 				let fsec = delay as isize;
-				let usec = ((delay % 1.0) * 1_000_000_000.0) as isize;
+				let usec = ((delay % 1.0) * 1_000_000_000.0)
+					as isize;
 				let timeout = TimeVal { sec: fsec, usec: usec };
 
 				unsafe {
@@ -119,7 +120,6 @@ mod ffi {
 	}
 }
 
-/// A High Precision Event Timer (HPET) or equivalent device.
 pub struct Timer {
 	timer: ffi::Timer,
 	clock: Clock,
@@ -127,7 +127,7 @@ pub struct Timer {
 
 impl Timer {
 	pub fn new(secs: f32) -> Timer {
-		Timer { timer: ffi::Timer::new(secs), clock: Clock::now() }
+		Timer { timer: ffi::Timer::new(secs), clock: Clock::get() }
 	}
 
 	pub fn wait(&mut self) -> f32 {

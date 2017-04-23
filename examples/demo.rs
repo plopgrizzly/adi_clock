@@ -21,9 +21,12 @@ fn printout(h: f32) {
 fn main() {
 	println!("Demo: {}", VERSION);
 
-	let clock = Clock::now();
+	Timer::sleep(1.0);
+
+	let clock = Clock::get();
 	let mut timer = Timer::new(1.0 / 60.0);
 	let mut tv = 0.0;
+
 	loop {
 		printout(tv.half_linear_pulse(10.0));
 		printout(tv.half_smooth_pulse(10.0));
