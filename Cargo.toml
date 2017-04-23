@@ -3,10 +3,10 @@ name = "adi_clock"
 version = "0.1.0"
 authors = ["Jeron Aldaron Lau <jeron.lau@plopgrizzly.tech>"]
 description = """
-        The adi_clock library enables the programmer to control the CPU's\
-        Real-Time-Clock (RTC) and High Precision Event Timer (HPET). With this,\
-        one can time operations, get the time (TODO), sleep with precision, and\
-        animate smoothly.
+        The adi_clock library enables the programmer to control the CPU's \
+        Real-Time-Clock (RTC) and High Precision Event Timer (HPET). With \
+	this, one can time operations, get the time (TODO), sleep with \
+	precision, and animate smoothly.
 """
 keywords = [ "animation", "date", "clock", "timer", "hardware" ]
 categories = [
