@@ -19,4 +19,4 @@ If there is a platform this library doesn't work on, contact me at jeron.lau@plo
 
 # Contributing
 
-If you'd like to help implement functions for unsupported platforms, fix bugs or improve API, contact me at jeron.lau@plopgrizzly.tech. I'll appreciate any help.
+If you'd like to help implement functions for unsupported platforms, fix bugs, improve the API or improve the Documentation, then contact me at jeron.lau@plopgrizzly.tech. I'll appreciate any help.
