@@ -2,27 +2,49 @@
 	<title>adi_clock - Aldaron's Device Interface - Clock </title>
 <link rel="stylesheet" href="https://plopgrizzly.github.io/adi/style.css"/>
 </head>
-<body><iframe src="title.html" style="width:100%;overflow:hidden;" scrolling="no"></iframe>
-<button onclick="home()">home</button>
-<button onclick="clock()">clock</button>
-<button onclick="timer()">timer</button>
-<div id="docs"></div>
+<body>
+<div style="margin-left:5%;margin-right:5%;padding:0px;background:#111111;">
+	<img src="adi_clock.png" width="100%"/>
+	<button onclick="home()">home</button>
+	<button onclick="clock()">clock</button>
+	<button onclick="timer()">timer</button>
+</div>
+<div id="docs" class="docs"></div>
 <script>
+const HOME = 0;
+const CLOCK = 1;
+const TIMER = 2;
+var screen = HOME;
+
+function resize_iframe(obj) {
+	obj.style.height = obj.contentWindow.document.body.scrollHeight + 10 + 'px';
+}
+
 function home() {
+	screen = HOME;
 	document.getElementById("docs").innerHTML = "<iframe src=\"home.html\" \
-		style=\"position:absolute;height:60%;width:90%\"></iframe>";
+		id=\"docf\" frameborder=\"0\" scrolling\"no\"\
+		style=\"position:absolute;width:90%\"\
+		onload=\"resize_iframe(this);\"></iframe>";
 }
 
 function clock() {
+	screen = CLOCK;
 	document.getElementById("docs").innerHTML = "<iframe src=\"clock.html\"\
-		 style=\"position:absolute;height:60%;width:90%\"></iframe>";
+		id=\"docf\" frameborder=\"0\" scrolling\"no\"\
+		style=\"position:absolute;width:90%\"\
+		onload=\"resize_iframe(this);\"></iframe>";
 }
 
 function timer() {
+	screen = TIMER;
 	document.getElementById("docs").innerHTML = "<iframe src=\"timer.html\"\
-		 style=\"position:absolute;height:60%;width:90%\"></iframe>";
+		id=\"docf\" frameborder=\"0\" scrolling\"no\"\
+		style=\"position:absolute;width:90%\"\
+		onload=\"resize_iframe(this);\"></iframe>";
 }
 
 home();
+window.addEventListener("resize", resize);
 </script>
 </body></html>
