@@ -5,23 +5,17 @@
 <body>
 <div style="margin-left:5%;margin-right:5%;padding:0px;background:#111111;">
 	<img src="adi_clock.png" width="100%"/>
-	<button onclick="home()">home</button>
-	<button onclick="clock()">clock</button>
-	<button onclick="timer()">timer</button>
+	<button onclick="insertParam('home');home()">home</button>
+	<button onclick="insertParam('clock');clock()">clock</button>
+	<button onclick="insertParam('timer');timer()">timer</button>
 </div>
 <div id="docs" class="docs"></div>
 <script>
-const HOME = 0;
-const CLOCK = 1;
-const TIMER = 2;
-var screen = HOME;
-
 function resize_iframe(obj) {
 	obj.style.height = obj.contentWindow.document.body.scrollHeight + 10 + 'px';
 }
 
 function home() {
-	screen = HOME;
 	document.getElementById("docs").innerHTML = "<iframe src=\"home.html\" \
 		id=\"docf\" frameborder=\"0\" scrolling\"no\"\
 		style=\"position:absolute;width:90%\"\
@@ -29,7 +23,6 @@ function home() {
 }
 
 function clock() {
-	screen = CLOCK;
 	document.getElementById("docs").innerHTML = "<iframe src=\"clock.html\"\
 		id=\"docf\" frameborder=\"0\" scrolling\"no\"\
 		style=\"position:absolute;width:90%\"\
@@ -37,14 +30,58 @@ function clock() {
 }
 
 function timer() {
-	screen = TIMER;
 	document.getElementById("docs").innerHTML = "<iframe src=\"timer.html\"\
 		id=\"docf\" frameborder=\"0\" scrolling\"no\"\
 		style=\"position:absolute;width:90%\"\
 		onload=\"resize_iframe(this);\"></iframe>";
 }
 
-home();
+/*
+ * This was borrowed from http://stackoverflow.com/questions/901115/how-can-i-ge
+ * t-query-string-values-in-javascript
+ */
+function getParameterByName(name, url) {
+	if (!url) {
+		url = window.location.href;
+	}
+	name = name.replace(/[\[\]]/g, "\\$&");
+	var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	results = regex.exec(url);
+	if (!results) return null;
+	if (!results[2]) return '';
+	return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+/*
+ * This was borrowed from http://stackoverflow.com/questions/486896/adding-a-par
+ * ameter-to-the-url-with-javascript
+ */
+function insertParam(value) {
+	key = encodeURI('m'); value = encodeURI(value);
+
+	var kvp = document.location.search.substr(1).split('&');
+
+	var i=kvp.length; var x; while(i--) {
+		x = kvp[i].split('=');
+		if (x[0] == key) {
+			x[1] = value;
+			kvp[i] = x.join('=');
+			break;
+		}
+	}
+
+	if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+
+	document.location.search = kvp.join('&');
+}
+
+m = getParameterByName('m');
+switch(m) {
+	case 'home': home(); break;
+	case 'clock': clock(); break;
+	case 'timer': timer(); break;
+	default: insertParam('home'); break;
+}
 window.addEventListener("resize", resize);
 </script>
 </body></html>
