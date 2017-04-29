@@ -5,7 +5,7 @@
 <body>
 <div style="margin-left:5%;margin-right:5%;padding:0px;background:#111111;">
 	<img src="adi_clock.png" width="100%"/>
-	<button onclick="insertParam('home');home()">home</button>
+	<button onclick="insertParam('');home()">home</button>
 	<button onclick="insertParam('clock');clock()">clock</button>
 	<button onclick="insertParam('timer');timer()">timer</button>
 </div>
@@ -57,30 +57,31 @@ function getParameterByName(name, url) {
  * ameter-to-the-url-with-javascript
  */
 function insertParam(value) {
+	var ishome = (value == '');
 	key = encodeURI('m'); value = encodeURI(value);
 
-	var kvp = document.location.search.substr(1).split('&');
-
-	var i=kvp.length; var x; while(i--) {
-		x = kvp[i].split('=');
-		if (x[0] == key) {
-			x[1] = value;
-			kvp[i] = x.join('=');
-			break;
+	if(!ishome) {
+		var kvp = document.location.search.substr(1).split('&');
+		var i=kvp.length; var x; while(i--) {
+			x = kvp[i].split('=');
+			if (x[0] == key) {
+				x[1] = value;
+				kvp[i] = x.join('=');
+				break;
+			}
 		}
+		if(i<0) {kvp[kvp.length] = [key,value].join('=');}
+		document.location.search = kvp.join('&');
+	}else{
+		document.location.search = document.location.search.substr(999);
 	}
-
-	if(i<0) {kvp[kvp.length] = [key,value].join('=');}
-
-	document.location.search = kvp.join('&');
 }
 
 m = getParameterByName('m');
 switch(m) {
-	case 'home': home(); break;
 	case 'clock': clock(); break;
 	case 'timer': timer(); break;
-	default: insertParam('home'); break;
+	default: home(); break;
 }
 window.addEventListener("resize", resize);
 </script>
