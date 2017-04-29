@@ -1,6 +1,6 @@
 [package]
 name = "adi_clock"
-version = "0.1.1"
+version = "0.2.0"
 authors = ["Jeron Aldaron Lau <jeron.lau@plopgrizzly.tech>"]
 description = """
         The adi_clock library enables the programmer to control the CPU's \
@@ -11,7 +11,7 @@ description = """
 keywords = [ "animation", "date", "clock", "timer", "hardware" ]
 categories = [
 	"date-and-time", "hardware-support", "multimedia::audio",
-	"multimedia::video", "os"
+	"multimedia::video"
 ]
 license = "MIT"
 documentation = "http://plopgrizzly.tech/adi_clock/"

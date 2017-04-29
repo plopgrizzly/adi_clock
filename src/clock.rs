@@ -6,15 +6,20 @@
 use std::time::Instant;
 use std::f32;
 
+/// Clock represents the state of a Real-Time-Clock (RTC). You can use it to
+/// make animations, time operations, or determine the date and time (TODO). 
 pub struct Clock {
 	time: Instant,
 }
 
 impl Clock {
-	pub fn get() -> Clock {
+	/// Get the current state of the Real-Time-Clock (RTC).
+	pub fn create() -> Clock {
 		Clock { time: Instant::now() }
 	}
 
+	/// Get the number of seconds since self was initialized (or since get()
+	/// was called).
 	pub fn since(&self) -> f32 {
 		let duration = self.time.elapsed();
 		let nanos : f32 = duration.subsec_nanos() as f32
@@ -25,18 +30,18 @@ impl Clock {
 }
 
 pub trait Pulse {
-	fn half_linear_pulse(&self, rate_spr: f32) -> f32;
-	fn full_linear_pulse(&self, rate_spr: f32) -> f32;
-	fn full_smooth_pulse(&self, rate_spr: f32) -> f32;
-	fn half_smooth_pulse(&self, rate_spr: f32) -> f32;
+	fn pulse_half_linear(&self, rate_spr: f32) -> f32;
+	fn pulse_full_linear(&self, rate_spr: f32) -> f32;
+	fn pulse_full_smooth(&self, rate_spr: f32) -> f32;
+	fn pulse_half_smooth(&self, rate_spr: f32) -> f32;
 }
 
 impl Pulse for f32 {
-	fn half_linear_pulse(&self, rate_spr: f32) -> f32 {
+	fn pulse_half_linear(&self, rate_spr: f32) -> f32 {
 		(self % rate_spr) / rate_spr
 	}
 	
-	fn full_linear_pulse(&self, rate_spr: f32) -> f32 {
+	fn pulse_full_linear(&self, rate_spr: f32) -> f32 {
 		let rtn = (self % rate_spr) / (rate_spr / 2.0);
 		if rtn > 1.0 {
 			2.0 - rtn
@@ -45,13 +50,13 @@ impl Pulse for f32 {
 		}
 	}
 	
-	fn full_smooth_pulse(&self, rate_spr: f32) -> f32 {
-		1.0 - (((self.full_linear_pulse(rate_spr) * f32::consts::PI)
+	fn pulse_full_smooth(&self, rate_spr: f32) -> f32 {
+		1.0 - (((self.pulse_full_linear(rate_spr) * f32::consts::PI)
 			.cos() + 1.0) / 2.0)
 	}
 	
-	fn half_smooth_pulse(&self, rate_spr: f32) -> f32 {
-		1.0 - (((self.half_linear_pulse(rate_spr) * f32::consts::PI)
+	fn pulse_half_smooth(&self, rate_spr: f32) -> f32 {
+		1.0 - (((self.pulse_half_linear(rate_spr) * f32::consts::PI)
 			.cos() + 1.0) / 2.0)
 	}
 }

@@ -23,15 +23,15 @@ fn main() {
 
 	Timer::sleep(1.0);
 
-	let clock = Clock::get();
-	let mut timer = Timer::new(1.0 / 60.0);
+	let clock = Clock::create();
+	let mut timer = Timer::create(1.0 / 60.0);
 	let mut tv = 0.0;
 
 	loop {
-		printout(tv.half_linear_pulse(10.0));
-		printout(tv.half_smooth_pulse(10.0));
-		printout(tv.full_linear_pulse(10.0));
-		printout(tv.full_smooth_pulse(10.0));
+		printout(tv.pulse_half_linear(10.0));
+		printout(tv.pulse_half_smooth(10.0));
+		printout(tv.pulse_full_linear(10.0));
+		printout(tv.pulse_full_smooth(10.0));
 		println!("Seconds elapsed: {}", clock.since());
 		tv = timer.wait();
 		print!("\x1B[1A\x1B[1A\x1B[1A\x1B[1A\x1B[1A");

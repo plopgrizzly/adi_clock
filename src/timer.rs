@@ -29,8 +29,8 @@ mod ffi {
 	}
 
 	impl Timer {
-		pub fn new(secs: f32) -> Timer {
-			Timer { timeout:secs, ticks:secs, clock:Clock::get() }
+		pub fn create(secs: f32) -> Timer {
+			Timer{ timeout:secs, ticks:secs, clock:Clock::create() }
 		}
 
 		pub fn wait(&mut self) -> () {
@@ -95,7 +95,7 @@ mod ffi {
 	fn checks(_: Handle) {}
 
 	impl Timer {
-		pub fn new(secs: f32) -> Timer {
+		pub fn create(secs: f32) -> Timer {
 			let timer = unsafe { CreateWaitableTimerW(0, 0, 0) };
 			checks(timer);
 			let time = (secs * -10000000.0) as i64;
@@ -126,8 +126,8 @@ pub struct Timer {
 }
 
 impl Timer {
-	pub fn new(secs: f32) -> Timer {
-		Timer { timer: ffi::Timer::new(secs), clock: Clock::get() }
+	pub fn create(secs: f32) -> Timer {
+		Timer{ timer: ffi::Timer::create(secs), clock: Clock::create() }
 	}
 
 	pub fn wait(&mut self) -> f32 {
@@ -136,6 +136,6 @@ impl Timer {
 	}
 
 	pub fn sleep(secs: f32) -> f32 {
-		Timer::new(secs).wait()
+		Timer::create(secs).wait()
 	}
 }

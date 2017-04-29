@@ -18,15 +18,15 @@ fn main() {
 	
 	}*/
 
-	let mut timer = Timer::new(1.0 / 60.0);
-	let mut prev = 0.0;
+	let mut timer = Timer::create(1.0 / 60.0);
+//	let mut prev = 0.0;
 
 	println!("made Time");
 
 	loop {
 		let next = timer.wait();
 		println!("{}", next);
-		prev = next;
+//		prev = next;
 //		println!("waited {}", seconds_since(a));
 	}
 }

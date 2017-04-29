@@ -8,16 +8,19 @@
 It is used for precise sleeping.
 </p>
 
-<h4>fn <i>new</i>(<mark>secs</mark>: f32) -> Timer</h4>
+<h4>fn <i>create</i>(<mark>secs</mark>: f32) -> Timer</h4>
 <p>Create a new repeating timer with an interval of <mark>secs</mark> seconds.
 </p>
 
 <h4>fn <i>wait</i>(&mut <mark>self</mark>) -> f32</h4>
-<p>Wait until timer <mark>self</mark> goes off.
+<p>Wait until timer <mark>self</mark> goes off.  Returns the number of seconds
+since <mark>self</mark> was initialized (or since <i>Timer::new()</i> was
+called).
 </p>
 
 <h4>fn <i>sleep</i>(<mark>secs</mark>: f32) -> f32</h4>
-<p>Sleep for <mark>secs</mark> seconds.
+<p>Sleep (wait) for <mark>secs</mark> seconds.  Returns the number of seconds
+passed while sleeping.
 </p>
 
 <hr>
