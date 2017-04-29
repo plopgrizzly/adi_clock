@@ -120,21 +120,28 @@ mod ffi {
 	}
 }
 
+/// Timer represents a High Precision Event Timer (HPET) or equivalent device.
+/// It is used for precise sleeping.
 pub struct Timer {
 	timer: ffi::Timer,
 	clock: Clock,
 }
 
 impl Timer {
+	/// Create a new repeating timer with an interval of secs seconds.
 	pub fn create(secs: f32) -> Timer {
 		Timer{ timer: ffi::Timer::create(secs), clock: Clock::create() }
 	}
 
+	/// Wait until timer self goes off. Returns the number of seconds since
+	/// self was initialized (or since Timer::new() was called).
 	pub fn wait(&mut self) -> f32 {
 		self.timer.wait();
 		self.clock.since()
 	}
 
+	/// Sleep (wait) for secs seconds. Returns the number of seconds passed
+	/// while sleeping.
 	pub fn sleep(secs: f32) -> f32 {
 		Timer::create(secs).wait()
 	}
