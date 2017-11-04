@@ -1,10 +1,9 @@
-![Aldaron's Device Interface](https://plopgrizzly.github.io/adi/adi.png)
+# Aldaron's Device Interface / Clock (adi_clock 0.3.0)
 
-# Aldaron's Device Interface: adi_clock 0.2.0
-
-Rust library for controlling the CPU's Real-Time-Clock (RTC) and High Precision
-Event Timer (HPET). Time operations, get the time (TODO), sleep with precision,
-and animate smoothly.
+Aldaron's Device Interface / Clock is a library developed by Plop Grizzly
+for interfacing with the CPU's Real-Time-Clock (RTC) and High Precision
+Event Timer (HPET). With this, one can time operations, get the time (TODO),
+sleep with precision, and animate smoothly.
 
 # Documentation
 

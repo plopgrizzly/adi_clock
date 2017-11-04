@@ -1,7 +1,8 @@
-/**
- * adi_clock - Aldaron's Device Interface - Clock - "timer.rs"
- * Copyright 2017 (c) Jeron Lau - Licensed under the MIT LICENSE
-**/
+// Aldaron's Device Interface / Clock
+// Copyright (c) 2017 Plop Grizzly, Jeron Lau <jeron.lau@plopgrizzly.com>
+// Licensed under the MIT LICENSE
+//
+// src/timer.rs
 
 use clock::Clock;
 
@@ -129,12 +130,12 @@ pub struct Timer {
 
 impl Timer {
 	/// Create a new repeating timer with an interval of secs seconds.
-	pub fn create(secs: f32) -> Timer {
+	pub fn new(secs: f32) -> Timer {
 		Timer{ timer: ffi::Timer::create(secs), clock: Clock::create() }
 	}
 
-	/// Wait until timer self goes off. Returns the number of seconds since
-	/// self was initialized (or since Timer::new() was called).
+	/// Wait until timer `self` goes off. Returns the number of seconds
+	/// since `self` was initialized with `Timer::new()`.
 	pub fn wait(&mut self) -> f32 {
 		self.timer.wait();
 		self.clock.since()
