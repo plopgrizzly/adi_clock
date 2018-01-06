@@ -4,6 +4,8 @@
 //
 // src/pulse.rs
 
+use std::f32;
+
 /// Call these functions on the return value of Clock::since().  Use `rate_spr`
 /// to specify how many seconds it takes to cycle through the animation.
 pub trait Pulse {

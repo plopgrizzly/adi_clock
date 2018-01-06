@@ -11,7 +11,7 @@
 
 #![warn(missing_docs)]
 #![doc(html_logo_url = "http://plopgrizzly.com/adi_clock/icon.png",
-	html_favicon_url = "http://plopgrizzly.com/adi_clock/icon.png",
+	html_favicon_url = "http://plopgrizzly.com/adi_clock/icon.ico",
 	html_root_url = "http://plopgrizzly.com/adi_clock/")]
 
 mod clock;

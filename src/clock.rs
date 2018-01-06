@@ -5,7 +5,6 @@
 // src/clock.rs
 
 use std::time::Instant;
-use std::f32;
 
 /// Clock represents the state of a Real-Time-Clock (RTC). You can use it to
 /// make animations, time operations, or determine the date and time (TODO). 
