@@ -1,5 +1,5 @@
 // Aldaron's Device Interface / Clock
-// Copyright (c) 2017 Plop Grizzly, Jeron Lau <jeron.lau@plopgrizzly.com>
+// Copyright (c) 2017 Jeron Lau <jeron.lau@plopgrizzly.com>
 // Licensed under the MIT LICENSE
 //
 // src/pulse.rs

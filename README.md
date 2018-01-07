@@ -10,11 +10,12 @@ sleep with precision, and animate smoothly.
 
 ## Features
 **adi_clock**'s current features:
-* Decode png image files
+* Get the state of the RTC (Real Time Clock)
+* Measure time passed with the HPET (High Precision Event Timer)
+* Create smooth animations with `Pulse` (See documentation)
 
 **adi_clock**'s planned features:
-* Encode png image files
-* Encode and decode apng files.
+* Get the time of day / date
 
 ## Support
 **adi_clock**'s current support:
@@ -22,27 +23,10 @@ sleep with precision, and animate smoothly.
 * Windows
 
 **adi_clock**'s planned support:
-* Without png crate, with optimized multithreaded rust png loading.
 * Arduino and Raspberry Pi (no os)
-
-
-# Documentation
-
-The documentation for adi_clock can be found at
-http://plopgrizzly.tech/adi_clock/.
-
-# Supported Platforms
-
- currently supports
-
-1. Unix
-2. Windows
-
-If there is a platform this library doesn't work on, contact me at
-jeron.lau@plopgrizzly.tech. I'll appreciate any help.
 
 # Contributing
 
 If you'd like to help implement functions for unsupported platforms, fix bugs,
 improve the API or improve the Documentation, then contact me at
-jeron.lau@plopgrizzly.tech. I'll appreciate any help.
+jeron.lau@plopgrizzly.com. I'll appreciate any help.
